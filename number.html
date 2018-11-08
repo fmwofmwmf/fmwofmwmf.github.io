@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<body onload = "numberGoUp()"></body>
+
+<p id="numberer"></p>
+
+<button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up faster 10</button>
+<p></p>
+<button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
+<script>
+var number = 1110
+var a = 1
+var c = 10
+var c2 = 100
+var speed = 500
+document.getElementById("numberer").innerHTML = number
+
+var timer = setInterval(function numberGoUp() {
+number = number + (1*a)
+document.getElementById("numberer").innerHTML = number
+}, 500)
+
+function numberGoUpMore() {
+if (number >= c) {
+number = number - c
+a = a + 1
+c = 10 * a
+document.getElementById("numberer").innerHTML = number
+document.getElementById("buton").innerHTML = "Click to make the number go up faster " + c
+}
+}
+
+function numberGoUpEvenMore() {
+if (number >= c2) {
+c2 = c2*5
+speed = speed / 2
+clearInterval(timer)
+clearInterval(timer2)
+var timer2 = setInterval(function numberGoUp() {
+number = number + (1*a)
+document.getElementById("numberer").innerHTML = number
+}, speed)
+document.getElementById("buon").innerHTML = "Click to make the number go up to a lot of speed " + c2
+}
+}
+</script>
+
+</body>
+</html>
