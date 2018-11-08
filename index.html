@@ -2,8 +2,9 @@
 <html>
 <body>
 
-<body onload = "numberGoUp()"></body>
-<body onload = "doSomething()"></body>
+  <body onload = "numberGoUp()"></body>
+  <body onload = "doSomething()"></body>
+  <body onload = "doSomething2()"></body>
 <p id="numberer"></p>
 <p id="numbererer"></p>
   
@@ -59,6 +60,11 @@ document.getElementById("buon").innerHTML = "Click to make the number go up to a
 setInterval (function doSomething() {
 if (number > 200000)
   document.getElementById("good").style.display = "inline-block"
+})
+  
+setInterval (function doSomething2() {
+if (numberer = 10)
+  alert("You found a map on the floor while threshing. It peaks your curiosity.")
 })
   
   function convert() {
