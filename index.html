@@ -5,18 +5,25 @@
 <body onload = "numberGoUp()"></body>
 
 <p id="numberer"></p>
-
+<p id="numbererer"></p>
+  
 <button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up faster 10</button>
 <p></p>
 <button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
+  <p></p>
+  <p></p>
+  <button onclick = "convert" id = "good">Look at this good number</button>
 <script>
 var number = 0
+var numberer = 0
 var a = 1
 var c = 10
 var c2 = 100
 var speed = 500
-document.getElementById("numberer").innerHTML = number
-
+  document.getElementById("numberer").innerHTML = number
+  document.getElementById("numbererer").style.display = "none"
+  document.getElementById("good").style.display = "none"
+  
 var timer = setInterval(function numberGoUp() {
 number = number + (1*a)
 document.getElementById("numberer").innerHTML = number
@@ -46,6 +53,20 @@ document.getElementById("numberer").innerHTML = number
 document.getElementById("buon").innerHTML = "Click to make the number go up to a lot of speed " + c2
 }
 }
+  
+function doSomething() {
+if (number > 200000)
+document.getElementById("numbererer").style.display = "inline-block"
+  document.getElementById("good").style.display = "inline-block"
+}
+  
+  function convert() {
+    if (number > 50000) {
+      number = number / 2
+      document.getElementById("numberer").innerHTML = number
+      document.getElementById("numbererer").innerHTML = numberer
+    }
+  }
 </script>
 
 </body>
