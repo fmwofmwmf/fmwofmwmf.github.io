@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<p id="numberer"></p>
-<p id="numbererer"></p>
   
-<button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up better 10</button>
-
-<p></p>
-
-<button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
-
-  <p></p>
-  <p></p>
+ <div>
+   <p id="numberer"></p>
+   <p id="numbererer"></p>
+  <button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up better 12</button>
+   <p></p>
+  <button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
+   <p></p>
+   <p></p>
   <button onclick = "convert()" id = "good">Look at this good number</button>
-<script>
+ </div>
+ <div>
+  
+ </div>
+  <script>
 var number = 0
 var numberer = 0
 var a = 1
-var c = 10
+var c = 12
 var c2 = 100
 var speed = 1000
 
   document.getElementById("numberer").innerHTML = number
   document.getElementById("good").style.display = "none"
   
-var timer = setInterval(function numberGoUp() {
-number = number + (1*a)
-document.getElementById("numberer").innerHTML = number
-}, 1000)
+ var timer = setInterval(function numberGoUp() {
+  number = number + (1*a)
+  document.getElementById("numberer").innerHTML = number
+ }, 1000)
 
-function numberGoUpMore() {
-if (number >= c) {
-number = number - c
-a = a + 1
-c = 12 * a
-document.getElementById("numberer").innerHTML = number
-document.getElementById("buton").innerHTML = "Click to make the number go up faster " + c
-}
-}
-function numberGoUpEvenMore() {
-if (number >= c2) {
-number = number - c2
-c2 = c2*5
-speed = speed / 2
-clearInterval(timer)
-clearInterval(timer2)
-var timer2 = setInterval(function numberGoUp() {
-number = number + (1*a)
-document.getElementById("numberer").innerHTML = number
-}, speed)
-document.getElementById("buon").innerHTML = "Click to make the number go up to a lot of speed " + c2
-}
-}
-  
-setInterval (function doSomething() {
-if (number > 200000)
-  document.getElementById("good").style.display = "inline-block"
-})
-  
-var timerer = setInterval (function doSomething2() {
- if (numberer >= 10) {
-  alert("You found a map on the floor while fabricating numbers. It peaks your curiosity.")
-   clearInterval(timerer)
+ function numberGoUpMore() {
+  if (number >= c) {
+   number = number - c
+   a = a + 1
+   c = 12 * a
+   document.getElementById("numberer").innerHTML = number
+   document.getElementById("buton").innerHTML = "Click to make the number go up faster " + c
+  }
  }
-})
+    
+ function numberGoUpEvenMore() {
+  if (number >= c2) {
+   number = number - c2
+   c2 = c2*5
+   speed = speed / 2
+   clearInterval(timer)
+   clearInterval(timer2)
+   var timer2 = setInterval(function numberGoUp() {
+    number = number + (1*a)
+    document.getElementById("numberer").innerHTML = number
+   }, speed)
+   document.getElementById("buon").innerHTML = "Click to make the number go up to a lot of speed " + c2
+   }
+  }
+  
+  setInterval (function doSomething() {
+   if (number > 50000)
+   document.getElementById("good").style.display = "inline-block"
+  })
+  
+  var timerer = setInterval (function doSomething2() {
+   if (numberer >= 1) {
+    alert("You found a map on the floor while fabricating numbers. It peaks your curiosity.")
+    clearInterval(timerer)
+   }
+  })
   
   function convert() {
     if (number > 50000) {
@@ -74,6 +76,8 @@ var timerer = setInterval (function doSomething2() {
       document.getElementById("numbererer").innerHTML = numberer
     }
   }
+    
+  
 </script>
 
 </body>
