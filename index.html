@@ -26,6 +26,7 @@
    <button id = "woodFab"></button>
    <button id = "stoneFab"></button>
    <button id = "metalFab"></button>
+   <button id = "shinyFab" onclick = "shiny()" onmouseover = "shinytxt()"></button>
  </div>
   <script>
 var number = 0
@@ -91,7 +92,7 @@ var speed = 1000
   }
     
   function shiny() {
-    if (number = 100000 && numberer = 10) {
+    if (number >= 100000 && numberer >= 10) {
       number = number - 100000
       numberer = numberer - 10
       numbererer = numbererer + 1
