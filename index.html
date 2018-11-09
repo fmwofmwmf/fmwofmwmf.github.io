@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <div>
+    <button id = "fabricator">The Fabricator</button>
+    <button id = "forge">The Forge</button>
+    <button id = "world">The World</button>
+  </div>
   
- <div>
-   <p id="numberer"></p>
-   <p id="numbererer"></p>
-  <button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up better 12</button>
-   <p></p>
-  <button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
-   <p></p>
-   <p></p>
-  <button onclick = "convert()" id = "good">Look at this good number</button>
+  <div id = "fabricatorTab">
+     <p id="numberer"></p>
+     <p id="numbererer"></p>
+   <button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up better 12</button>
+     <p></p>
+   <button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
+     <p></p>
+     <p></p>
+   <button onclick = "convert()" id = "good">Look at this good number</button>
  </div>
- <div>
+   
+ <div id = worldTab>
+   
+ </div>
   
+ <div id = "forgeTab">
+   <button id = "woodFab"></button>
+   <button id = "stoneFab"></button>
+   <button id = "metalFab"></button>
+   <button id = "shinyNum" onclick = "shiny()" onmouseover = "shinytxt()">S</button>
  </div>
   <script>
 var number = 0
@@ -77,6 +90,9 @@ var speed = 1000
     }
   }
     
+  function shiny() {
+    if (number = 100000 && numberer = 10)
+  }
   
 </script>
 
