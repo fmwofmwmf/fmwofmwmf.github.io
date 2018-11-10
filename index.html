@@ -10,6 +10,7 @@
   <div id = "fabricatorTab">
      <p id="numberer"></p>
      <p id="numbererer" class="good"></p>
+     <p id="number4" class="realGood"></p>
    <button onclick = "numberGoUpMore()" id = "buton">Click to make the number go up better 12</button>
      <p></p>
    <button onclick = "numberGoUpEvenMore()" id = "buon">Click to make the number go up to a lot of speed 100</button>
@@ -27,18 +28,25 @@
    <button id = "woodFab" onmouseover = "woodtxt()" onmouseout = "notxt()">wood</button>
    <button id = "stoneFab" onmouseover = "stonetxt()" onmouseout = "notxt()">stone</button>
    <button id = "metalFab" onmouseover = "metaltxt()" onmouseout = "notxt()">metal</button>
-   <button id = "shinyFab" onclick = "shiny()" onmouseover = "shinytxt()" onmouseout = "notxt()"> shiny number</button>
+   <button id = "shinyFab" onclick = "shinyMake()" onmouseover = "shinytxt()" onmouseout = "notxt()"> shiny number</button>
+   <p></p>
+   <button id="mapMake" onclick="map()" onmouseover = "maptxt()" onmouseout = "notxt()">a model of the world</button>
+   <button id="mapShow" onclick="guru()" onmouseover = "gurutxt()" onmouseout = "notxt()">make a mapping guru</button>
    <p id = "forgeThings"></p>
  </div>
  
   <script>
+  
 var number = 0
 var numberer = 0
-var numbererer = 0
+var numb3r = 0
 var a = 1
 var c = 12
 var c2 = 100
 var speed = 1000
+var map = 0
+var guru = 0
+
   document.getElementById("numberer").innerHTML = number
   
   good.style.display = "none"
@@ -149,8 +157,44 @@ var speed = 1000
     document.getElementById("forgeThings").innerHTML = "look at this shiny number [500000 10]"
   }
   
+  function maptxt() {
+    document.getElementById("forgeThings").innerHTML = "A map-like advanced digital display."
+  }
+    
+  function gurutxt() {
+    document.getElementById("forgeThings").innerHTML = "A guru who will show you limited parts of the map."
+  }
+  
   function notxt() {
     document.getElementById("forgeThings").innerHTML = " "
+  }
+  
+  function shinyMake() {
+    if (number >= 500000 && numberer >= 10) {
+      number = number - 500000
+      numberer = numberer - 10
+      numb3r = numb3r + 1
+      document.getElementById("numberer").innerHTML = number
+      document.getElementById("numbererer").innerHTML = numberer
+      document.getElementById("number4").innerHTML = numb3r
+    }
+  }
+  
+  function map() {
+    if (numberer >= 10 && numb3r >= 1) {
+      map = 1
+      mapMake.style.display = "none"
+      mapShow.style.display = "block"
+      document.getElementById("numbererer").innerHTML = numberer
+      document.getElementById("number4").innerHTML = numb3r
+    }
+  }
+  
+  function guru() {
+    if (numb3r >= 1) {
+      guru = 1
+      mapShow.style.display = "none"
+    }
   }
   
 </script>
@@ -158,6 +202,10 @@ var speed = 1000
 <style>
   p.good {
     font-weight:bold;
+  }
+  
+  p.realGood {
+    font-style:italic;
   }
 </style>
 
