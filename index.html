@@ -3,8 +3,8 @@
 <body>
   <div>
     <button id = "fabricator" onclick = "fabFunc()">The Fabricator</button>
-    <button id = "forge" onclick = "forgeFunc()">The Forge</button>
     <button id = "world" onclick = "worldFunc()">The World</button>
+        <button id = "forge" onclick = "forgeFunc()">The Forge</button>
   </div>
   
   <div id = "fabricatorTab">
@@ -19,14 +19,16 @@
  </div>
    
  <div id = "worldTab">
-   
+   <p>oi theres nothin here</p>
  </div>
   
  <div id = "forgeTab">
-   <button id = "woodFab"></button>
-   <button id = "stoneFab"></button>
-   <button id = "metalFab"></button>
-   <button id = "shinyFab" onclick = "shiny()" onmouseover = "shinytxt()"></button>
+   <p></p>
+   <button id = "woodFab" onmouseover = "woodtxt()" onmouseout = "notxt()">wood</button>
+   <button id = "stoneFab" onmouseover = "stonetxt()" onmouseout = "notxt()">stone</button>
+   <button id = "metalFab" onmouseover = "metaltxt()" onmouseout = "notxt()">metal</button>
+   <button id = "shinyFab" onclick = "shiny()" onmouseover = "shinytxt()" onmouseout = "notxt()"> shiny number</button>
+   <p id = "forgeThings"></p>
  </div>
  
   <script>
@@ -39,9 +41,10 @@ var c2 = 100
 var speed = 1000
   document.getElementById("numberer").innerHTML = number
   
-  document.getElementById("good").style.display = "none"
-  document.getElementById("forgeTab").style.display = "none"
-  document.getElementById("worldTab").style.display = "none"
+  good.style.display = "none"
+  forgeTab.style.display = "none"
+  worldTab.style.display = "none"
+  buon.style.display = "none"
   
  var timer = setInterval(function numberGoUp() {
   number = number + (1*a)
@@ -54,6 +57,9 @@ var speed = 1000
    c = 12 * a
    document.getElementById("numberer").innerHTML = number
    document.getElementById("buton").innerHTML = "Click to make the number go up faster " + c
+  }
+  if (number >= 100) {
+    buon.style.display = "block"
   }
  }
     
@@ -119,6 +125,25 @@ var speed = 1000
   worldTab.style.display = "block"
   }
   
+  function woodtxt() {
+    document.getElementById("forgeThings").innerHTML = "The wood goes *fabrication noise*. Wait you did this without a tool? Wowza"
+  }
+  
+  function stonetxt() {
+    document.getElementById("forgeThings").innerHTML = "Fabricate the stone! You will work harder!"
+  }
+  
+  function metaltxt() {
+    document.getElementById("forgeThings").innerHTML = "metal"
+  }
+  
+  function shinytxt() {
+    document.getElementById("forgeThings").innerHTML = "look at this shiny number [500000 10]"
+  }
+  
+  function notxt() {
+    document.getElementById("forgeThings").innerHTML = " "
+  }
   
 </script>
 
