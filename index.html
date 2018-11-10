@@ -2,9 +2,9 @@
 <html>
 <body>
   <div>
-    <button id = "fabricator" onclick = "fabClc">The Fabricator</button>
-    <button id = "forge" onclick = "forgeClc">The Forge</button>
-    <button id = "world" onclick = "worldClc">The World</button>
+    <button id = "fabricator" onclick = "fabFunc()">The Fabricator</button>
+    <button id = "forge" onclick = "forgeFunc()">The Forge</button>
+    <button id = "world" onclick = "worldFunc()">The World</button>
   </div>
   
   <div id = "fabricatorTab">
@@ -18,7 +18,7 @@
    <button onclick = "convert()" id = "good">Look at this good number</button>
  </div>
    
- <div id = worldTab>
+ <div id = "worldTab">
    
  </div>
   
@@ -28,6 +28,7 @@
    <button id = "metalFab"></button>
    <button id = "shinyFab" onclick = "shiny()" onmouseover = "shinytxt()"></button>
  </div>
+ 
   <script>
 var number = 0
 var numberer = 0
@@ -36,15 +37,16 @@ var a = 1
 var c = 12
 var c2 = 100
 var speed = 1000
-
   document.getElementById("numberer").innerHTML = number
+  
   document.getElementById("good").style.display = "none"
+  document.getElementById("forgeTab").style.display = "none"
+  document.getElementById("worldTab").style.display = "none"
   
  var timer = setInterval(function numberGoUp() {
   number = number + (1*a)
   document.getElementById("numberer").innerHTML = number
  }, 1000)
-
  function numberGoUpMore() {
   if (number >= c) {
    number = number - c
@@ -98,6 +100,25 @@ var speed = 1000
       numbererer = numbererer + 1
     }
   }
+  
+  function fabFunc () {
+  fabricatorTab.style.display = "block"
+  forgeTab.style.display = "none"
+  worldTab.style.display = "none"
+  }
+  
+  function forgeFunc () {
+  fabricatorTab.style.display = "none"
+  forgeTab.style.display = "block"
+  worldTab.style.display = "none"
+  }
+  
+  function worldFunc () {
+  fabricatorTab.style.display = "none"
+  forgeTab.style.display = "none"
+  worldTab.style.display = "block"
+  }
+  
   
 </script>
 
