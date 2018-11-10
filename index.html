@@ -45,7 +45,10 @@ var speed = 1000
   forgeTab.style.display = "none"
   worldTab.style.display = "none"
   buon.style.display = "none"
-  
+  fabricator.style.display = "none"
+  world.style.display = "none"
+  forge.style.display = "none"
+ 
  var timer = setInterval(function numberGoUp() {
   number = number + (1*a)
   document.getElementById("numberer").innerHTML = number
@@ -57,9 +60,6 @@ var speed = 1000
    c = 12 * a
    document.getElementById("numberer").innerHTML = number
    document.getElementById("buton").innerHTML = "Click to make the number go up faster " + c
-  }
-  if (number >= 100) {
-    buon.style.display = "block"
   }
  }
     
@@ -79,14 +79,22 @@ var speed = 1000
   }
   
   setInterval (function doSomething() {
-   if (number > 50000)
+   if (number > 50000) {
    document.getElementById("good").style.display = "inline-block"
+   }
+   if (number >= 100) {
+    buon.style.display = "block"
+   }
+
   })
   
   var timerer = setInterval (function doSomething2() {
    if (numberer >= 1) {
     alert("You found a map on the floor while fabricating numbers. It peaks your curiosity.")
     clearInterval(timerer)
+    fabricator.style.display = "inline-block"
+    world.style.display = "inline-block"
+    forge.style.display = "inline-block"
    }
   })
   
