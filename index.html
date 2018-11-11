@@ -120,9 +120,11 @@
 <button id="9-9" class="button" onClick="placeplacer(9,9)">1</button>
 </div>
 <div>
+  <p id="goDetails"></p>
   <p id="place"></p>
   <p id="pplace"></p>
   <p id="distance"></p>
+  <button id="confirm" onclick="confirmed()">Warp there!</button>
 </div>
  </div>
   
@@ -140,19 +142,29 @@
  
   <script>
   
+    //most variables
+    
+//main numbers
 var number = 0
 var numberer = 0
 var numb3r = 0
 var num2rev = 0
 var num3rev = 0
+
+//for original counter -forgot how it works dont touch-
 var a = 1
 var c = 12
 var c2 = 100
 var speed = 1000
+
+//forge things
 var map = 0
 var guru = 0
+
+  //first num update prob useless
   document.getElementById("numberer").innerHTML = number
-  
+    
+  //set up hiddenthings
   good.style.display = "none"
   forgeTab.style.display = "none"
   worldTab.style.display = "none"
@@ -161,6 +173,8 @@ var guru = 0
   world.style.display = "none"
   forge.style.display = "none"
  
+    //updates everything
+    
  var allcount = setInterval(function() {
    document.getElementById("numberer").innerHTML = number
    if (num2rev == 1) {
@@ -170,6 +184,8 @@ var guru = 0
      document.getElementById("number4").innerHTML = numb3r
    }
  })
+ 
+   //basic counters
  
  var timer = setInterval(function numberGoUp() {
   number = number + (1*a)
@@ -198,6 +214,8 @@ var guru = 0
    }
   }
   
+    //reveals
+    
   setInterval (function doSomething() {
    if (number > 50000) {
    document.getElementById("good").style.display = "inline-block"
@@ -217,6 +235,8 @@ var guru = 0
    }
   })
   
+    //convert to good
+  
   function convert() {
     if (number > 50000) {
       number = Math.round(number / 2)
@@ -225,7 +245,8 @@ var guru = 0
     }
   }
     
-  
+    //forge stuff
+    
   function fabFunc () {
   fabricatorTab.style.display = "block"
   forgeTab.style.display = "none"
@@ -296,6 +317,10 @@ var guru = 0
     }
   }
   
+    //map stuff
+    
+  var x2
+  var y2
   var playerplace = {
     x:1,
     y:1,
@@ -304,10 +329,27 @@ var guru = 0
     }
   }
   
-  function placeplacer(x,y){
-    document.getElementById("place").innerHTML = x + "," + y
-    document.getElementById("pplace").innerHTML = playerplace.full()
-    document.getElementById("distance").innerHTML = (x-playerplace.x) + (y-playerplace.y)
+  document.getElementById("confirm").style.display = "none"
+  
+  function placeplacer(x,y,id){
+    document.getElementById("goDetails").innerHTML = "Travelling information:"
+    document.getElementById("place").innerHTML = "Destination - " + "[" + x + "," + y + "]"
+    document.getElementById("pplace").innerHTML = "Current location - " + "[" +playerplace.full() + "]"
+    document.getElementById("distance").innerHTML = "Distance - " + "[" + ((x-playerplace.x) + (y-playerplace.y)) + "]"
+     
+     x2 = x
+     y2 = y
+     document.getElementById("confirm").style.display = "inline-block"
+    }
+  
+  function confirmed () {
+    playerplace.x = x2
+    playerplace.y = y2
+    document.getElementById("goDetails").innerHTML = "You have traveled to: " + "[" + playerplace.x + "," + playerplace.y + "]"
+    document.getElementById("place").innerHTML = "Costing a total of: " + "oi i havent got there yet"
+    document.getElementById("pplace").innerHTML = "You have a total of:" + "infinite fuel rn"
+    document.getElementById("distance").innerHTML = ""
+    document.getElementById("confirm").style.display = "none"
   }
     
 </script>
