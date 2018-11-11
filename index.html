@@ -583,9 +583,9 @@ var guru = 0
     document.getElementById("deadcounter").innerHTML = "Time until revival: " + deadtime
       if (deadtime == 0) {
         clearInterval(deadtimer)
+        document.getElementById("trvinf").style.display = "inline-block"
         document.getElementById("deadcounter").innerHTML = ""
         document.getElementById("mapdiv").style.display = "inline-block"
-        
         document.getElementById("goDetails").innerHTML = "You have been: [Revived]"
       document.getElementById("place").innerHTML = "Your current state: [Healthy]"
     document.getElementById("pplace").innerHTML = "You have a total of: [100% life]"
