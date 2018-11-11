@@ -335,7 +335,12 @@ var guru = 0
     document.getElementById("goDetails").innerHTML = "Travelling information:"
     document.getElementById("place").innerHTML = "Destination - " + "[" + x + "," + y + "]"
     document.getElementById("pplace").innerHTML = "Current location - " + "[" +playerplace.full() + "]"
+    
+    if ((x-playerplace.x) + (y-playerplace.y) > 0) {
     document.getElementById("distance").innerHTML = "Distance - " + "[" + ((x-playerplace.x) + (y-playerplace.y)) + "]"
+    } else {
+    document.getElementById("distance").innerHTML = "Distance - " + "You're already here."
+    }
      
      x2 = x
      y2 = y
