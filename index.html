@@ -20,7 +20,7 @@
  </div>
    
  <div id = "worldTab">
-
+<div class="map" id="mapdiv">
 <div>
 <button id="1-1" class="button" onClick="placeplacer(1,1,0,0)">0</button>
 <button id="2-1" class="button" onClick="placeplacer(2,1,0,0)">0</button>
@@ -273,7 +273,10 @@
 <button id="9-16" class="button" onClick="placeplacer(9,16,1,0)">1</button>
 <button id="10-16" class="button" onClick="placeplacer(10,16,1,0)">1</button>
 </div>
+</div>
 
+</div>
+ <p id="deadcounter"></p>
  <div class="trvinf" id="trvinf">
   <p id="goDetails"></p>
   <p id="place"></p>
@@ -283,7 +286,7 @@
     <p id="hostility">very</p>
     <p id="events">none</p>
   </div>
-  <p></p>
+  <p id="deadtext"></p>
   <button id="confirm" onclick="confirmed()">Warp there!</button>
   <button id="unconfirm" onclick="unconfirmed()">Close</button>
  </div>
