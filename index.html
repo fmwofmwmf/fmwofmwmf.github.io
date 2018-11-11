@@ -479,11 +479,14 @@ var guru = 0
   }
   
     //map stuff
-    
+        
   var x2
   var y2
   var hos
   var str
+  var strc
+  var dead
+  var deadtime = 60
   var playerplace = {
     x:1,
     y:1,
@@ -492,6 +495,7 @@ var guru = 0
     }
   }
   
+  document.getElementById("trvinf").style.display = "none"
   document.getElementById("trvinf").style.display = "none"
   
   function placeplacer(x,y,s,h){
@@ -544,14 +548,16 @@ var guru = 0
     document.getElementById("hostility").innerHTML = "Hostility: " + "[" + hos +"]"
     
     document.getElementById("events").innerHTML = "Structures: " + "[" + str + "]"
-    
+     strc = s
      x2 = x
      y2 = y
      document.getElementById("trvinf").style.display = "inline-block"
+     document.getElementById("mapdiv").style.display = "inline-block"
      document.getElementById("confirm").style.display = "inline-block"
     }
   
   function confirmed () {
+    if (strc > 0) {
     playerplace.x = x2
     playerplace.y = y2
     document.getElementById("goDetails").innerHTML = "You have traveled to: " + "[" + playerplace.x + "," + playerplace.y + "]"
@@ -559,8 +565,38 @@ var guru = 0
     document.getElementById("pplace").innerHTML = "You have a total of:" + "infinite fuel rn"
     document.getElementById("distance").innerHTML = ""
     document.getElementById("confirm").style.display = "none"
-  }
+    } else if (strc == 0) {
+      document.getElementById("goDetails").innerHTML = "You have traveled to: " + "[" + "A patch of empty space" + "]"
+      document.getElementById("place").innerHTML = "Your current state: [Not alive]"
+    document.getElementById("pplace").innerHTML = "You have a total of: [A large amount of dead]"
+    document.getElementById("distance").innerHTML = ""
+    document.getElementById("confirm").style.display = "none"
+    document.getElementById("deadtext").innerHTML = "[Please wait for revival] howd u die theres not even any enemies yet"
+    document.getElementById("mapdiv").style.display = "none"
     
+    var deadtimer = setInterval (function() {
+    deadtime = deadtime - 1
+    
+    document.getElementById("deadcounter").innerHTML = "Time until revival: " + deadtime
+      if (deadtime == 0) {
+        clearInterval(deadtimer)
+        document.getElementById("deadcounter").innerHTML = ""
+        document.getElementById("mapdiv").style.display = "inline-block"
+        
+        document.getElementById("goDetails").innerHTML = "You have been: [Revived]"
+      document.getElementById("place").innerHTML = "Your current state: [Healthy]"
+    document.getElementById("pplace").innerHTML = "You have a total of: [100% life]"
+    document.getElementById("distance").innerHTML = ""
+    document.getElementById("hostility").innerHTML = "Hostility: [Uncertain]"
+    document.getElementById("events").innerHTML = "Structures: [Carbon-based lifeform]"
+    document.getElementById("confirm").style.display = "none"
+    document.getElementById("deadtext").innerHTML = "{Revival complete} Time taken: [60 seconds]"
+      }
+    },1000)
+    
+    }
+  }
+
   function unconfirmed() {
     document.getElementById("trvinf").style.display = "none"
   }
@@ -607,6 +643,16 @@ var guru = 0
     border-width: thin;
     border-style: solid;
   }
+  
+.map {
+  padding-right: 0px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-width: thick;
+  border-style: solid;
+  margin-right: 205px;
+}
 </style>
 
 </body>
