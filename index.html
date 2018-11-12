@@ -4,7 +4,7 @@
   <div>
     <button id = "fabricator" onclick = "fabFunc()">The Fabricator</button>
     <button id = "world" onclick = "worldFunc()">The World</button>
-        <button id = "forge" onclick = "forgeFunc()">The Forge</button>
+    <button id = "forge" onclick = "forgeFunc()">The Forge</button>
   </div>
   
   <div id = "fabricatorTab">
@@ -275,6 +275,18 @@
 <button id="10-16" class="button" onClick="placeplacer(10,16,1,0)">1</button>
 </div>
 <!--end of map buttons-->
+</div> 
+
+<div class="fmap" id="forgeFind">
+  <button id="forgePlace" class="button" onClick="forgeDiscover()">#</button>
+</div>
+<div>
+  <p id="fgoDetails"></p>
+  <p id="fplace"></p>
+  <p id="fpplace"></p>
+  <button id="shuttle" onclick="shuttleMake()" onmouseover="shuttleText()" onmouseout="notatext()">Fabricate a shuttle</button>
+  <button id="setOff" onclick="goToForge()" onmouseover="GTFText()" onmouseout="notatext()">Set out</button>
+  <p id="fexplain"></p>
 </div>
 
 <div id="mapinfo">
@@ -294,9 +306,7 @@
   </div>
  </div>
  
- <div class="fmap" id="forgeFind">
-   <button id="forgePlace" class="button" onClick="forgeDiscover()">#</button>
- </div>
+
  <!--end of map stuff-->
 </div>
   
@@ -319,7 +329,7 @@
     
 //main numbers
 var number = 11111111110
-var numberer = 0
+var numberer = 150
 var numb3r = 0
 var num2rev = 0
 var num3rev = 0
@@ -392,10 +402,13 @@ var guru = 0
     
   setInterval (function doSomething() {
    if (number > 50000) {
-   document.getElementById("good").style.display = "inline-block"
+     document.getElementById("good").style.display = "inline-block"
    }
    if (number >= 100) {
-    buon.style.display = "block"
+     buon.style.display = "block"
+   }
+   if (ch == 2) {
+     document.getElementById("fexplain").innerHTML = "congrats i havent added any more u can see the forge tho"
    }
   })
   
@@ -405,7 +418,6 @@ var guru = 0
     clearInterval(timerer)
     fabricator.style.display = "inline-block"
     world.style.display = "inline-block"
-    forge.style.display = "inline-block"
    }
   })
   
@@ -499,6 +511,7 @@ var guru = 0
   var str
   var strc
   var dead
+  var ch = 0
   var deadtime = 60
   var playerplace = {
     x:10,
@@ -509,7 +522,9 @@ var guru = 0
   }
   
   document.getElementById("trvinf").style.display = "none"
-  document.getElementById("trvinf").style.display = "none"
+  document.getElementById("mapdiv").style.display = "none"
+  document.getElementById("shuttle").style.display = "none"
+  document.getElementById("setOff").style.display = "none"
   
   function placeplacer(x,y,s,h){
     document.getElementById("goDetails").innerHTML = "Travelling information:"
@@ -611,6 +626,45 @@ var guru = 0
     }
   }
 
+  function forgeDiscover() {
+    if (ch == 0) {
+    document.getElementById("fgoDetails").innerHTML = "Traveling information:"
+    document.getElementById("fplace").innerHTML = "Destination - [Undetermined]"
+    document.getElementById("fpplace").innerHTML = "Current location - [Undetermined]"
+    document.getElementById("shuttle").style.display = "inline-block"
+    }
+      }
+      
+  function shuttleMake() {
+    if (numberer >= 100) {
+      numberer = numberer - 100
+      document.getElementById("shuttle").style.display = "none"
+      document.getElementById("setOff").style.display = "inline-block"
+      ch = 1
+    }
+  }
+  
+  function goToForge() {
+    if (numberer >= 50) {
+      numberer = numberer - 50
+      document.getElementById("setOff").style.display = "none"
+      ch = 2
+      forge.style.display = "inline-block"
+    }
+  }
+  
+  function shuttleText() {
+    document.getElementById("fexplain").innerHTML = "A vehicle to survive space will require 100 good numbers to fabricate."
+  }
+  
+  function GTFText() {
+    document.getElementById("fexplain").innerHTML = "Fabricating the organic nutrients required for such a journey will require 50 good numbers."
+  }
+  
+    function notatext() {
+    document.getElementById("fexplain").innerHTML = ""
+  }
+  
   function unconfirmed() {
     document.getElementById("trvinf").style.display = "none"
     document.getElementById("deadtext").innerHTML = ""
@@ -671,7 +725,7 @@ var guru = 0
 
 .fmap {
   padding-right: 15px;
-  padding-left: 15px;
+  padding-left: 10px;
   padding-bottom: 5px;
   padding-top: 5px;
   border-width: thick;
@@ -682,3 +736,4 @@ var guru = 0
 
 </body>
 </html>
+
