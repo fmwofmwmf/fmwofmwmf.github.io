@@ -20,6 +20,7 @@
  </div>
    
  <div id = "worldTab">
+
 <div class="map" id="mapdiv">
 <div>
 <button id="1-1" class="button" onClick="placeplacer(1,1,0,0)">0</button>
@@ -273,9 +274,10 @@
 <button id="9-16" class="button" onClick="placeplacer(9,16,1,0)">1</button>
 <button id="10-16" class="button" onClick="placeplacer(10,16,1,0)">1</button>
 </div>
+<!-end of map buttons->
 </div>
 
-</div>
+<div id="mapinfo">
  <p id="deadcounter"></p>
  <div class="trvinf" id="trvinf">
   <p id="goDetails"></p>
@@ -289,8 +291,14 @@
   <p id="deadtext"></p>
   <button id="confirm" onclick="confirmed()">Warp there!</button>
   <button id="unconfirm" onclick="unconfirmed()">Close</button>
+  </div>
  </div>
+ 
+ <div class="fmap" id="forgeFind">
+   <button id="forgePlace" class="button" onClick="forgeDiscover()">#</button>
  </div>
+ <!-end of map stuff->
+</div>
   
  <div id = "forgeTab">
    <p></p>
@@ -302,6 +310,7 @@
    <button id="mapMake" onclick="map()" onmouseover = "maptxt()" onmouseout = "notxt()">a model of the world</button>
    <button id="mapShow" onclick="guru()" onmouseover = "gurutxt()" onmouseout = "notxt()">make a mapping guru</button>
    <p id = "forgeThings"></p>
+   <!-end of forge->
  </div>
  
   <script>
@@ -309,7 +318,7 @@
     //most variables
     
 //main numbers
-var number = 0
+var number = 11111111110
 var numberer = 0
 var numb3r = 0
 var num2rev = 0
@@ -336,6 +345,7 @@ var guru = 0
   fabricator.style.display = "none"
   world.style.display = "none"
   forge.style.display = "none"
+ 
  
     //updates everything
     
@@ -656,7 +666,17 @@ var guru = 0
   padding-top: 5px;
   border-width: thick;
   border-style: solid;
-  margin-right: 205px;
+  width: 315px;
+}
+
+.fmap {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-width: thick;
+  border-style: solid;
+  width: 10px;
 }
 </style>
 
