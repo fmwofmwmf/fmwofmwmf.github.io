@@ -6,14 +6,103 @@
 	</head>
 	<body>
 		<script type="application/processing">
-			void setup(){
-				size(200, 200);
-			}
-			
-			void draw(){
-				background(64);
-				ellipse(mouseX, mouseY, 20, 20);
-			}
+			int r = 1;
+int diameter = 100;
+int amount = 0;
+int allowance = 20;//allowancccc
+boolean right = false;
+boolean righted = false;
+PVector v1 = new PVector(0, 0);
+PVector v2 = new PVector(0, 0);
+PVector v3 = new PVector(0, 0);
+float[] aX = new float[allowance+1];
+float[] aY = new float[allowance+1];
+float[] aX1 = new float[allowance+1];
+float[] aY1 = new float[allowance+1];
+float[] aXA = new float[allowance+1];
+float[] aYA = new float[allowance+1];
+
+void setup() {
+  size(400,400);
+}
+
+void draw()  {
+
+
+  background(255);
+  noFill();
+  strokeWeight(1);
+  text("lines: " + allowance,10,10);
+  
+  if (mousePressed==true && mouseButton==RIGHT){
+    right = true;
+    if (r==1) {
+    v1.x = mouseX;
+    v1.y = mouseY;
+      r=0;
+    }
+  v2.x = mouseX-v1.x;
+  v2.y = mouseY-v1.y;
+  v2.limit(diameter/2);
+    noFill();
+  circle(v1.x,v1.y,diameter);
+  fill(100);
+  circle(v2.x+v1.x
+        ,v2.y+v1.y
+        ,10);
+        
+  line(v2.x+v1.x,v2.y+v1.y,v1.x,v1.y);
+  
+  }
+  
+  if (r==2&&allowance>0) {
+    if (righted) {
+    amount++;
+    allowance --;
+    }
+    
+    aX[amount]=v2.x+v1.x;
+    aX1[amount]=v1.x;
+    aY[amount]=v2.y+v1.y;
+    aY1[amount]=v1.y;
+    aXA[amount]=0;
+    aYA[amount]=0;
+    
+    r=1;
+  }
+  
+  for (int i=0 ; i<=amount ; i++){
+    if (
+    aY[i]+aYA[i]>0 && 
+    aY1[i]+aYA[i]>0 && 
+    aY[i]+aYA[i]<400 && 
+    aY1[i]+aYA[i]<400 &&
+    aX[i]+aXA[i]>0 && 
+    aX1[i]+aXA[i]>0 && 
+    aX[i]+aXA[i]<400 && 
+    aX1[i]+aXA[i]<400 
+    ) {
+    aXA[i]+=(aX[i]-(aX1[i]))/10;
+    aYA[i]+=(aY[i]-(aY1[i]))/10;
+    }
+    
+    
+    line(aX[i]+aXA[i],aY[i]+aYA[i],aX1[i]+aXA[i],aY1[i]+aYA[i]);
+    
+  }
+}
+
+void mouseReleased() {
+  if (right) {
+  r=2;
+  right = false;
+  righted = true;
+  } else {
+    circle(mouseX,mouseY,10);
+    r=2;
+  }
+  
+}
 		</script>
 		<canvas> </canvas>
 	</body>
