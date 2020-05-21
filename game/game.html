@@ -6,60 +6,126 @@
 	</head>
 	<body>
 		<script type="application/processing">
-			  float mX;
+			  float x;
+float y;
+float speedX;
+float speedY;
+float pSpeed;
+float leftPos;
+float diam = 20;
+float rectHeight = 50;
+float rectWidth = 10;
+float multiplier;
+int score;
+
 void setup() {
-  size(720, 480);
+  frameRate(60);
+  size(1000, 500);
+  reset();
+  textSize(25);
+  textAlign(CENTER);
+  ellipseMode(CENTER);
+}
+
+void reset() {
+  score = 0;
+  speedX = 10;
+  speedY = 10;
+  pSpeed = 10;
+  leftPos = 0;
+  multiplier = 4;
+  x= random(100); //700
+  y= random(100); //300
+}
+
+void draw() {   
+  x += speedX;
+  y += speedY;
+
+  background(0);
+
+  fill(255, 0, 0);
+
+  for (int i = 1; i < 500; i += 25) {
+    rect(width/2, i, 5, 15);            //red line down the middle
+  }
+
+  fill(0, 255, 255);
+
+  ellipse(x, y, diam, diam);
+
+
+  //left
+ 
+   rect(30, leftPos += pSpeed , rectWidth, rectHeight*multiplier);
+   
+   if (leftPos > 500 - rectHeight*multiplier || leftPos < 0) {
+     pSpeed = -pSpeed;
+   }
+   
+    if ( x > diam && x < rectWidth*3 && y > leftPos-rectHeight/4*multiplier 
+    && y < leftPos+rectHeight*multiplier ) { //ball bounce off paddle on left
+
+    speedX = speedX * -1;
+  } 
+
+ 
+
+  //right
+  if (mouseY>=rectHeight/2 && mouseY<= height-rectHeight/2) {
+    rect(width-30, mouseY-rectHeight/2, rectWidth, rectHeight); //has to be outside of the top and bottom to be in boundaries
+  }
+
+  if (mouseY<rectHeight/2) {
+    rect(width-30, 0, rectWidth, rectHeight); //top rectangle to make sure it doesnt go off
+  }                                  //screen
+
+  if (mouseY>height-rectHeight/2) {
+    rect(width-30, height-rectHeight, rectWidth, rectHeight); //bottom rectangle with the same role
+  }
+
+  if ( x > width-rectWidth*3 && x < width-rectWidth*2 && y > mouseY-rectHeight/2 && y < mouseY+rectHeight/2 ) { //ball bounce off paddle on right
+
+    speedX = speedX * -1;
+    score++;
+  } 
+  
+  text(score, 900, height-30);
+  text("SCORE: ", 850, height-30);
+  fill(0, 255, 0);
+  ellipse(750, height-40, 50, 50);
+  fill(255, 255, 0);
+  ellipse(700, height-40, 50, 50);
+  fill(255, 0, 0);
+  ellipse(650, height-40, 50, 50);
+
+  if ( y > height || y < 0  ) {
+    speedY *= -1;
+  }
+  
+
+  if (keyPressed || x > width ) {
+    reset();
+  }
+}
+
+
+
+
+
+void setup() {
+  size(500, 500);
 }
 
 void draw() {
-  float y = map(mouseY,0,height,100,45);
-  
-  float targetX = mouseX;
-  float dx = targetX - mX;
-  mX += dx * 0.05;
-  
-smooth();
-strokeWeight(2);
-ellipseMode(RADIUS);
-  background(255);
-fill(102); // Set fill to gray
-ellipse(mX, 377, 33, 33); // Antigravity orb
-text(y,100,100);
-pushMatrix();
-translate(mX-264,410);
-scale(1,y/100);
-// Body
-noStroke(); // Disable stroke
-fill(0); // Set fill to black
-rect(219, -153, 90, 120); // Main body
-fill(102); // Set fill to gray
-rect(219, -136, 90, 6); // Gray stripe
-// Neck
-stroke(102); // Set stroke to gray
-line(266, -153, 266, -248); // Left
-line(276, -153, 276, -248); // Middle
-line(286, -153, 286, -248); // Right
-popMatrix();
-
-pushMatrix();
-translate(mX-264,-y*2.5+220);
-// Antennae
-line(276, 155, 246, 112); // Small
-line(276, 155, 306, 56); // Tall
-line(276, 155, 342, 170); // Medium
-// Head
-fill(0); // Set fill to black
-ellipse(276, 155, 45, 45); // Head
-fill(255); // Set fill to white
-ellipse(288, 150, 14, 14); // Large eye
-fill(0); // Set fill to black
-ellipse(288, 150, 3, 3); // Pupil
-fill(153); // Set fill to light gray
-ellipse(263, 148, 5, 5); // Small eye 1
-ellipse(296, 130, 4, 4); // Small eye 2
-ellipse(305, 162, 3, 3); // Small eye 3
-popMatrix();
+  if (dist(mouseX, mouseY, 250, 250) < 25 && mousePressed) {
+    fill(0, 0, 255);
+  } else {
+    fill(100);
+  }
+  ellipse(250, 250, 50, 50);
 }
+
 		</script>
 		<canvas> </canvas>
 	</body>
