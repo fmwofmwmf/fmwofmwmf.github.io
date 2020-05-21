@@ -81,7 +81,7 @@ class Ball {
 
     if (distanceVectMag < minDistance) {
       float distanceCorrection = (minDistance-distanceVectMag)/2.0;
-      PVector d = distanceVect.copy();
+      PVector d = new PVector(distanceVect.x,distanceVect.y);
       PVector correctionVector = d.normalize().mult(distanceCorrection);
       other.position.add(correctionVector);
       position.sub(correctionVector);
