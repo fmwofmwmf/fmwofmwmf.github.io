@@ -6,102 +6,59 @@
 	</head>
 	<body>
 		<script type="application/processing">
-			int r = 1;
-int diameter = 100;
-int amount = 0;
-int allowance = 20;//allowancccc
-boolean right = false;
-boolean righted = false;
-PVector v1 = new PVector(0, 0);
-PVector v2 = new PVector(0, 0);
-PVector v3 = new PVector(0, 0);
-float[] aX = new float[allowance+1];
-float[] aY = new float[allowance+1];
-float[] aX1 = new float[allowance+1];
-float[] aY1 = new float[allowance+1];
-float[] aXA = new float[allowance+1];
-float[] aYA = new float[allowance+1];
-
+			  float mX;
 void setup() {
-  size(400,400);
+  size(720, 480);
 }
 
-void draw()  {
-
-
+void draw() {
+  float y = map(mouseY,0,height,100,45);
+  
+  float targetX = mouseX;
+  float dx = targetX - mX;
+  mX += dx * 0.05;
+  
+smooth();
+strokeWeight(2);
+ellipseMode(RADIUS);
   background(255);
-  noFill();
-  strokeWeight(1);
-  text("lines: " + allowance,10,10);
-  
-  if (mousePressed==true && mouseButton==RIGHT){
-    right = true;
-    if (r==1) {
-    v1.x = mouseX;
-    v1.y = mouseY;
-      r=0;
-    }
-  v2.x = mouseX-v1.x;
-  v2.y = mouseY-v1.y;
-  v2.limit(diameter/2);
-    noFill();
-  circle(v1.x,v1.y,diameter);
-  fill(100);
-  circle(v2.x+v1.x
-        ,v2.y+v1.y
-        ,10);
-        
-  line(v2.x+v1.x,v2.y+v1.y,v1.x,v1.y);
-  
-  }
-  
-  if (r==2&&allowance>0) {
-    if (righted) {
-    amount++;
-    allowance --;
-    }
-    
-    aX[amount]=v2.x+v1.x;
-    aX1[amount]=v1.x;
-    aY[amount]=v2.y+v1.y;
-    aY1[amount]=v1.y;
-    aXA[amount]=0;
-    aYA[amount]=0;
-    
-    r=1;
-  }
-  
-  for (int i=0 ; i<=amount ; i++){
-    if (
-    aY[i]+aYA[i]>0 && 
-    aY1[i]+aYA[i]>0 && 
-    aY[i]+aYA[i]<400 && 
-    aY1[i]+aYA[i]<400 &&
-    aX[i]+aXA[i]>0 && 
-    aX1[i]+aXA[i]>0 && 
-    aX[i]+aXA[i]<400 && 
-    aX1[i]+aXA[i]<400 
-    ) {
-    aXA[i]+=(aX[i]-(aX1[i]))/10;
-    aYA[i]+=(aY[i]-(aY1[i]))/10;
-    }
-    
-    
-    line(aX[i]+aXA[i],aY[i]+aYA[i],aX1[i]+aXA[i],aY1[i]+aYA[i]);
-    
-  }
-}
+fill(102); // Set fill to gray
+ellipse(mX, 377, 33, 33); // Antigravity orb
+text(y,100,100);
+pushMatrix();
+translate(mX-264,410);
+scale(1,y/100);
+// Body
+noStroke(); // Disable stroke
+fill(0); // Set fill to black
+rect(219, -153, 90, 120); // Main body
+fill(102); // Set fill to gray
+rect(219, -136, 90, 6); // Gray stripe
+// Neck
+stroke(102); // Set stroke to gray
+line(266, -153, 266, -248); // Left
+line(276, -153, 276, -248); // Middle
+line(286, -153, 286, -248); // Right
+popMatrix();
 
-void mouseReleased() {
-  if (right) {
-  r=2;
-  right = false;
-  righted = true;
-  } else {
-    circle(mouseX,mouseY,10);
-    r=2;
-  }
-  
+pushMatrix();
+translate(mX-264,-y*2.5+220);
+// Antennae
+line(276, 155, 246, 112); // Small
+line(276, 155, 306, 56); // Tall
+line(276, 155, 342, 170); // Medium
+// Head
+fill(0); // Set fill to black
+ellipse(276, 155, 45, 45); // Head
+fill(255); // Set fill to white
+ellipse(288, 150, 14, 14); // Large eye
+fill(0); // Set fill to black
+ellipse(288, 150, 3, 3); // Pupil
+fill(153); // Set fill to light gray
+ellipse(263, 148, 5, 5); // Small eye 1
+ellipse(296, 130, 4, 4); // Small eye 2
+ellipse(305, 162, 3, 3); // Small eye 3
+popMatrix();
 }
 		</script>
 		<canvas> </canvas>
