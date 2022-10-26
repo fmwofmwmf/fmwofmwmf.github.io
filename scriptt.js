@@ -84,8 +84,8 @@ function scale(vec, scale) {
 var pastM = [0,0]
 function mouseInteract(e){
     if (clickin) {
-        let posx = (Math.min(e.clientX,300)-sizeX)/sizeX
-        let posy = (Math.min(e.clientY,300)-sizeY)/sizeY
+        let posx = (Math.min(e.clientX,sizeX*2)-sizeX)/sizeX
+        let posy = (Math.min(e.clientY,sizeY*2)-sizeY)/sizeY
         
         console.log("mouse location:", posx, posy)
         let dx = pastM[0]-posx, dy = pastM[1]-posy
@@ -106,8 +106,8 @@ clickin = false
 
 onmousedown = function (e) {
     clickin = true;
-    let posx = (Math.min(e.clientX,300)-sizeX)/sizeX
-    let posy = (Math.min(e.clientY,300)-sizeY)/sizeY
+    let posx = (Math.min(e.clientX,sizeX*2)-sizeX)/sizeX
+    let posy = (Math.min(e.clientY,sizeY*2)-sizeY)/sizeY
     pastM = [posx,posy]
 }, false
 
