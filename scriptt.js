@@ -25,6 +25,7 @@ ctx.globalAlpha = 0.4;
 function plot() {
     ctx.canvas.width = window.innerWidth;
     let sizeX = window.innerWidth/2
+    ctx.globalAlpha = 0.2;
     ctx.clearRect(0, 0, c.width, c.height);
     let newpoints = []
     for (let i = 0; i < points.length; i++) {
