@@ -1,6 +1,6 @@
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-ctx.canvas.width = window.innerWidth;
+c.width = window.innerWidth;
 let sizeX = window.innerWidth/2
 let sizeY = ctx.canvas.height/2
 for (let i = 0; i < points.length; i++) {
@@ -21,11 +21,10 @@ function getmat(x,y,z) {
     ]
 }
 
-ctx.globalAlpha = 0.4;
 function plot() {
     ctx.canvas.width = window.innerWidth-30;
     let sizeX = window.innerWidth/2
-    ctx.globalAlpha = 0.2;
+    ctx.globalAlpha = 0.3;
     ctx.clearRect(0, 0, c.width, c.height);
     let newpoints = []
     for (let i = 0; i < points.length; i++) {
@@ -34,7 +33,8 @@ function plot() {
         scale(e, getmat(drot[0],drot[1],drot[2]))
 
         grd = ctx.createRadialGradient(e[0]+sizeX, e[1]+sizeY, 1, e[0]+sizeX, e[1]+sizeY, e[3]);
-        grd.addColorStop(0, "rgb(250,250,250)");
+        c = Math.min(Math.max(e[2],-50), 50)/2+225
+        grd.addColorStop(0, "rgb("+c+","+c+","+c+")");
         grd.addColorStop(1, "rgb(150,150,150)");
         ctx.fillStyle = grd;
 
